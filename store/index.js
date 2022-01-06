@@ -27,6 +27,12 @@ export const getters = {
         }
         return state.tasks.filter(task => task.status === status)
     },
+    getTaskLengthByStatus: (state) => (status) => {
+        if (!state.tasks){
+            return []
+        }
+        return state.tasks.filter(task => task.status === status).length
+    },
     getTaskById: (state) => (id) => {
         return state.tasks.find(task => task.id == id)
     }

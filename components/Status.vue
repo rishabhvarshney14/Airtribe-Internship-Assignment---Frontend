@@ -1,6 +1,6 @@
 <template>
     <div class="status-container">
-        {{status}}
+        {{status}} - {{length}}
         <Container @drop="onDrop">
             <Draggable v-for="task in tasks" :key="task.id">
                 <Task :task="task"/>
@@ -19,12 +19,14 @@
         computed: {
             tasks() {
                 return this.$store.getters.getTaskByStatus(this.status)
+            }, 
+            length() {
+                return this.$store.getters.getTaskLengthByStatus(this.status)
             }
         },
         methods: {  
             onDrop(dropResult) {
                 console.log(dropResult)
-            // this.items = applyDrag(this.items, dropResult);
             }
         }
     }
